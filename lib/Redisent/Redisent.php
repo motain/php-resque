@@ -52,7 +52,20 @@ class Redisent {
     function __construct($host, $port = 6379) {
         $this->host = $host;
         $this->port = $port;
-				$this->establishConnection();
+        $success = false;
+        for ($i=1; $i<=5; $i++) {
+            try {
+                $this->establishConnection();
+                $success = true;
+                break;
+            } catch (Exception $e) {
+                sleep($i * 4);
+            }
+        }
+
+        if (!$success) {
+            $this->establishConnection();
+        }
     }
 
     function establishConnection() {

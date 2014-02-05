@@ -58,7 +58,7 @@ class Redisent {
                 $this->establishConnection();
                 $success = true;
                 break;
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 sleep($i * 4);
             }
         }

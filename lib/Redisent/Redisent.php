@@ -59,7 +59,7 @@ class Redisent {
                 $success = true;
                 break;
             } catch (\Exception $e) {
-                sleep($i * 4);
+                sleep(1);
             }
         }
 
